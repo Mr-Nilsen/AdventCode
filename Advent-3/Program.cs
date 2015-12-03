@@ -12,19 +12,18 @@ namespace Advent_3 {
         
 
         static void Main(string[] args) {
-            /*
-            ** Part.1
-            */ 
-
+            // Part.1
             List<Vector2> map = new List<Vector2>();
             Santa santa = new Santa();
+            map.Add(santa.WhereAreYou());
 
+            // Part.2
             List<Vector2> map2 = new List<Vector2>();
             Santa santa2 = new Santa(map2);
             Santa robo = new Santa(map2);
             bool turn = true;
-
-            map.Add(santa.WhereAreYou());
+            map2.Add(santa2.WhereAreYou());          
+            
 
             StreamReader reader = new StreamReader("input.txt");
             String puzzle = reader.ReadToEnd();
