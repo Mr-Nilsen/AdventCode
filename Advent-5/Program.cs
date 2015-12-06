@@ -13,6 +13,7 @@ namespace Advent_5
             StreamReader reader = new StreamReader("input.txt");
             string line;
             int count = 0;
+            int count2 = 0;
          
             List<string> niceList = new List<string>();
 
@@ -22,11 +23,14 @@ namespace Advent_5
                     count++;
                 }
 
-                // Part.2
-
+                // Part.2         
+                if(FindRepeats(line) && FindPair(line)) {
+                    count2++;
+                }
 
             }
             Console.WriteLine("Part.1: " + count);
+            Console.WriteLine("Part.2: " + count2);
             Console.ReadLine();
         }
 
@@ -80,6 +84,26 @@ namespace Advent_5
         }
 
         // Part.2
+        public static bool FindRepeats(string input) {
+            bool result = false;
+            for(int i = 0; i < input.Length-2; i++) {
+                if(input.Substring(i,1).Equals(input.Substring(i + 2, 1))) {
+                    result = true;
+                }
+            }
 
+            return result;
+        }
+
+        public static bool FindPair(string input) {
+            bool result = false;
+            for(int i = 0; i < input.Length - 1; i++) {
+                for(int j = i+2; j < input.Length - 1; j++)
+                if(input.Substring(i, 2).Equals(input.Substring(j, 2))) {
+                        result = true;
+                }
+            }
+            return result;
+        }
     }
 }
